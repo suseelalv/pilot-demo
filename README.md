@@ -130,20 +130,20 @@ DemoCopilotAgents/
 Step 1: clone
 Step 2: python -m venv .venv
 .venv\Scripts\activate.bat
-Step 3: Step 3: Install Dependencies 
-pip install -r requirements.txt
-or 
+Step 3: Install Dependencies 
 python -m pip install --upgrade pip
+pip install -r requirements.txt
+pip install -r dev-requirements.txt
 Step 4: Run the Application
 python main.py
 Step 5: Run the Tests
-pytest
-or pytest -v
+python -m pytest
+or python -m pytest -v
 To run a single test file:
 
 bash
 
-pytest tests/test_service.py
+python -m pytest tests/test_service.py
 Step 6: Run Using Demo Scripts
 Windows PowerShell
 powershell
@@ -151,22 +151,9 @@ powershell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 .\run_demo.ps1
 
-///Phython version ///
-python3 --version
-pytest not found
-Install again:
+# Notes
+If the `pytest` command is not found, use `python -m pytest` instead.
+If tests still fail, ensure the virtual environment is activated.
 
-bash
-
-pip install -r requirements.txt
-PowerShell blocks script execution
-Run:
-
-powershell
-
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-Then retry:
-
-powershell
 
 .\run_demo.ps1
