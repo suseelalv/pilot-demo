@@ -1,0 +1,43 @@
+{
+  "name": "CopyBlobToAzureSql_Template",
+  "properties": {
+    "activities": [
+      {
+        "name": "CopyFromBlobToAzureSql",
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "DelimitedTextSource",
+            "skipLineCount": 1
+          },
+          "sink": {
+            "type": "SqlSink"
+          },
+          "enableStaging": false
+        },
+        "inputs": [
+          {
+            "referenceName": "InputBlobDataset",
+            "type": "DatasetReference"
+          }
+        ],
+        "outputs": [
+          {
+            "referenceName": "OutputSqlTable",
+            "type": "DatasetReference"
+          }
+        ],
+        "policy": {
+          "timeout": "01:00:00",
+          "retry": 1
+        }
+      }
+    ],
+    "parameters": {
+      "sourcePath": { "type": "string" },
+      "filePattern": { "type": "string", "defaultValue": "*.csv"},
+      "targetTable": { "type": "string" },
+      "connection": { "type": "string" }
+    }
+  }
+}
